@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini AI Chatbot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Gemini AI Chatbot</h1>
+            <p id="statusIndicator" class="status-offline">Connecting...</p>
+        </div>
+
+        <div class="chat-box" id="chatBox">
+            <div class="message bot">
+                <div class="message-content">
+                    Hai! Saya adalah assistant AI yang menggunakan Google Gemini. Tanyakan apa saja! 👋
+                </div>
+            </div>
+        </div>
+
+        <div id="setupPrompt" class="setup-prompt">
+            <h2>⚙️ Tunggu Sebentar...</h2>
+            <p>Sedang cek koneksi backend ke server...</p>
+            <p style="font-size: 12px; color: #666;">Pastikan terminal backend sudah running dengan: <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">npm start</code></p>
+        </div>
+
+        <div class="input-area" id="inputArea" style="display: none;">
+            <div class="input-wrapper">
+                <textarea 
+                    id="userInput" 
+                    placeholder="Tanyakan sesuatu..." 
+                    rows="1"
+                ></textarea>
+                <button id="sendBtn" onclick="sendMessage()">📤</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
