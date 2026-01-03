@@ -3,7 +3,7 @@
 Full-stack chatbot application dengan backend Node.js (Express) dan frontend HTML/CSS/JS, terintegrasi dengan Google Gemini API.
 
 ## 🎯 Fitur Utama
-- ✅ UI dark mode dengan sidebar (daftar sesi di kiri, percakapan di kanan)
+- ✅ UI light mode dengan sidebar (daftar sesi di kiri, percakapan di kanan)
 - ✅ Chat bubble modern dengan avatar user/assistant dan timestamp
 - ✅ Status koneksi backend (Connected / Offline)
 - ✅ Typing indicator dan loading bubble saat bot menjawab
