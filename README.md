@@ -1,4 +1,4 @@
-AI Chatbot (Manray Assistant)
+## AI Chatbot (Manray Assistant)
 
 Full-stack chatbot application dengan backend Node.js (Express) dan frontend HTML/CSS/JS, terintegrasi dengan Google Gemini API.
 
@@ -276,7 +276,7 @@ MIT License - Bebas digunakan untuk keperluan pribadi/komersial
 
 ## 👤 Author
 
-[Nama Kamu] - [GitHub Profile Link]
+Muhammad Rizky Dermawan - github.com/dermawannnn99
 
 ---
 
