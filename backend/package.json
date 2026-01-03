@@ -1,14 +1,19 @@
 {
-  "name": "gemini-chatbot-backend",
+  "name": "manray-assistant-backend",
   "version": "1.0.0",
-  "description": "Backend proxy untuk Gemini API",
+  "description": "Backend proxy untuk Manray Assistant menggunakan Gemini API",
   "type": "module",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js"
   },
-  "keywords": [],
+  "keywords": [
+    "chatbot",
+    "gemini",
+    "ai",
+    "manray"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {

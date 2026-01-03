@@ -9,18 +9,26 @@ const PORT = process.env.PORT || 5000;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const API_BASE = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
 
-// Middleware
-app.use(cors());
+// Middleware - CORS harus PERTAMA
+app.use(cors({
+  origin: '*', // Izinkan semua origin untuk development
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
+
 app.use(express.json());
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
+  console.log('✅ Health check dipanggil');
   res.json({ status: 'Backend is running ✅' });
 });
 
-// Chat endpoint - ini yang akan dipanggil dari frontend
+// Chat endpoint
 app.post('/api/chat', async (req, res) => {
   try {
+    console.log('📨 Request diterima:', req.body);
+    
     const { message } = req.body;
 
     // Validasi input
@@ -29,8 +37,11 @@ app.post('/api/chat', async (req, res) => {
     }
 
     if (!GEMINI_API_KEY) {
+      console.error('❌ API Key tidak ditemukan!');
       return res.status(500).json({ error: 'API Key tidak terkonfigurasi di backend' });
     }
+
+    console.log('🚀 Mengirim ke Gemini API...');
 
     // Request ke Gemini API
     const requestBody = {
@@ -54,11 +65,14 @@ app.post('/api/chat', async (req, res) => {
     // Handle error dari Gemini
     if (!response.ok) {
       const error = data.error?.message || 'Terjadi kesalahan pada Gemini API';
+      console.error('❌ Gemini API Error:', error);
       return res.status(response.status).json({ error });
     }
 
     // Extract response dari Gemini
     const botMessage = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Tidak ada respons';
+
+    console.log('✅ Response berhasil:', botMessage.substring(0, 50) + '...');
 
     // Return ke frontend
     res.json({ 
@@ -71,7 +85,7 @@ app.post('/api/chat', async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Error:', error);
+    console.error('❌ Error:', error);
     res.status(500).json({ 
       error: error.message || 'Terjadi kesalahan pada server'
     });
@@ -90,6 +104,6 @@ app.use((err, req, res, next) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`\n🚀 Backend berjalan di http://localhost:${PORT}`);
-  console.log(`📝 API endpoint: POST http://localhost:${PORT}/api/chat`);
+  console.log(`📍 API endpoint: POST http://localhost:${PORT}/api/chat`);
   console.log(`💚 Health check: GET http://localhost:${PORT}/api/health\n`);
 });

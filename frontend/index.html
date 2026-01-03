@@ -3,42 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gemini AI Chatbot</title>
+    <title>Manray Assistant</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🤖 Gemini AI Chatbot</h1>
-            <p id="statusIndicator" class="status-offline">Connecting...</p>
+<div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1 class="app-title">Manray Assistant</h1>
+            <p id="statusIndicator" class="status-indicator status-loading">
+                Connecting...
+            </p>
+        </div>
+
+        <button class="new-chat-btn" id="newChatBtn">
+            New chat
+        </button>
+
+        <div class="history-header">
+            <span>Conversations</span>
+        </div>
+        <div class="history-list" id="historyList">
+            <button class="history-item active">
+                Session 1
+            </button>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="model-info">
+                <span class="model-name">Model: Gemini</span>
+                <span class="model-version">v1</span>
+                <span class="model-name">Built:</span>
+                <span class="model-version">@dermanray06</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CHAT AREA -->
+    <main class="main">
+        <div class="chat-header">
+            <div>
+                <h2>Conversation</h2>
+                <p class="chat-subtitle">
+                    Ask anything and the assistant will respond.
+                </p>
+            </div>
+            <div class="typing-indicator hidden" id="typingIndicator">
+                Bot is typing
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+            </div>
         </div>
 
         <div class="chat-box" id="chatBox">
             <div class="message bot">
-                <div class="message-content">
-                    Hai! Saya adalah assistant AI yang menggunakan Google Gemini. Tanyakan apa saja! 👋
+                <div class="avatar bot-avatar">M</div>
+                <div class="bubble">
+                    <div class="bubble-text">
+                        Hello, I am Manray Assistant. How can I help you today?
+                    </div>
+                    <div class="meta">
+                        <span class="role-label">Assistant</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div id="setupPrompt" class="setup-prompt">
-            <h2>⚙️ Tunggu Sebentar...</h2>
-            <p>Sedang cek koneksi backend ke server...</p>
-            <p style="font-size: 12px; color: #666;">Pastikan terminal backend sudah running dengan: <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">npm start</code></p>
+        <div class="suggestions" id="suggestions">
+            <button class="suggestion-chip" data-text="Explain this code step by step.">
+                Explain this code step by step
+            </button>
+            <button class="suggestion-chip" data-text="Summarize this text.">
+                Summarize this text
+            </button>
+            <button class="suggestion-chip" data-text="Give me ideas for a side project.">
+                Give me ideas for a side project
+            </button>
         </div>
 
-        <div class="input-area" id="inputArea" style="display: none;">
+        <div class="input-area" id="inputArea">
             <div class="input-wrapper">
-                <textarea 
-                    id="userInput" 
-                    placeholder="Tanyakan sesuatu..." 
+                <textarea
+                    id="userInput"
+                    placeholder="Type your message..."
                     rows="1"
                 ></textarea>
-                <button id="sendBtn" onclick="sendMessage()">📤</button>
+                <button id="sendBtn" class="send-btn">Send</button>
             </div>
         </div>
-    </div>
+    </main>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
